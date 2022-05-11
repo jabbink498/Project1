@@ -1,0 +1,13 @@
+from JoeyAbbinkProject1 import *
+
+class Test:
+    def setup_method(self):
+        self.grade = print_user_grade()
+
+    def teardown_method(self):
+        del self.grade
+
+    def test_print_user_grade(self):
+        pass
+
+
