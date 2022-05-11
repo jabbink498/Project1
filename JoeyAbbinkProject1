@@ -1,0 +1,72 @@
+import csv
+
+def print_user_grade(score):
+    '''
+    Method to return grade from given score
+    '''
+    if score > 100:
+        score = 'Invalid Score'
+        print(score)
+    elif score >= 90:
+        score = 'Grade = A'
+        print(score)
+    elif score >= 80:
+        score = 'Grade = B'
+        print(score)
+    elif score >= 70:
+        score = 'Grade = C'
+        print(score)
+    elif score >= 60:
+        score = 'Grade = D'
+        print(score)
+    elif 60 > score >= 0:
+        score = 'Grade = F'
+        print(score)
+    else:
+        print('Invalid Score, please input 0-100')
+
+    try:
+        if score == 'Invalid Score':
+            pass
+        else:
+            file_name = input('Enter file name: ')
+            x = open(file_name, 'w')
+            writer = csv.writer(x)
+            writer.writerow(score)
+
+    except IOError:
+        print("File does not exist!")
+
+
+def main():
+    while True:
+        try:
+            '''
+            Verifying input type
+            '''
+            score = float(input('Enter a score: '))
+            if score == type(str):
+                raise ValueError
+            print_user_grade(score)
+        except ValueError:
+            print('Must be int or float')
+
+        resume = input('Continue (y/n): ')
+
+        '''
+        Code to continue/quit
+        '''
+
+        resume = resume.strip().lower()
+        while resume != 'y' and resume != 'n':
+            resume = input("Enter 'y' or 'n':")
+        if resume == 'n':
+            break
+    print('End of program')
+
+
+
+
+
+if __name__ == '__main__':
+    main()
