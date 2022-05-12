@@ -8,6 +8,26 @@ class Test:
         del self.grade
 
     def test_print_user_grade(self):
-        pass
+        score = 100
+        self.grade.print_user_grade(score)
+        assert self.grade.__str__ == 'Grade = A'
 
+        score = 20.2
+        self.grade.print_user_grade(score)
+        assert self.grade.__str__ == 'Grade = F'
 
+        score = 70
+        self.grade.print_user_grade(score)
+        assert self.grade.__str__ == 'Grade = C'
+
+        score = 200
+        self.grade.print_user_grade(score)
+        assert self.grade.__str__ == 'Invalid Score'
+
+        score = 'g'
+        self.grade.print_user_grade(score)
+        assert self.grade.__str__ == 'Must be int or float'
+
+        score = -1
+        self.grade.print_user_grade(score)
+        assert self.grade.__str__ == 'Invalid Score, please input 0-100'
