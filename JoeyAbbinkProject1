@@ -4,6 +4,7 @@ def print_user_grade(score):
     '''
     Method to return grade from given score
     '''
+
     if score > 100:
         score = 'Invalid Score'
         print(score)
@@ -25,17 +26,14 @@ def print_user_grade(score):
     else:
         print('Invalid Score, please input 0-100')
 
-    try:
-        if score == 'Invalid Score':
-            pass
-        else:
-            file_name = input('Enter file name: ')
-            x = open(file_name, 'w')
-            writer = csv.writer(x)
-            writer.writerow(score)
+    if score == 'Invalid Score':
+        pass
+    else:
+        csvfile = open('Project1CSV.csv', 'a+')
+        content = csv.writer(csvfile, delimiter=',')
 
-    except IOError:
-        print("File does not exist!")
+        content.writerow([score])
+
 
 
 def main():
