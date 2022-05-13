@@ -29,7 +29,7 @@ def print_user_grade(score):
     if score == 'Invalid Score':
         pass
     else:
-        csvfile = open('Project1CSV.csv', 'a+')
+        csvfile = open('Project1CSV', 'a+')
         content = csv.writer(csvfile, delimiter=',')
 
         content.writerow([score])
